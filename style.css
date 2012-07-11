@@ -1,0 +1,57 @@
+body{
+  width: 400px;
+  margin: 35px auto 15px auto;
+  padding: auto;
+  text-align: center;
+}
+
+.data , .datainput , .dataoutput{
+  width: 85%;
+  margin: 15px auto;
+  font-size: larger;
+  padding: 7px;
+}
+
+.datainput{
+
+}
+
+.dataoutput{
+  height: 200px;
+  -webkit-box-shadow: inset 5px 12px 155px -5px #666;
+  box-shadow: inset 5px 12px 155px -5px #666;
+  border-radius: 5px;
+}
+
+.hidden{
+  display: none;
+  visibility: hidden;
+}
+
+#range{
+  padding: 0px;
+}
+
+#int{
+  
+}
+
+#select{
+  
+}
+
+.red{
+  background: #ff0d05;
+}
+.green{
+  background: #21ff15;
+}
+.blue{
+  background: #195aff;
+}
+.cyan{
+  background: #1bfff2;
+}
+.yellow{
+  background: #fff114;
+}

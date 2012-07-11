@@ -1,0 +1,71 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>colorize.js</title>
+  
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="./modernizr.custom.min.js"></script>
+  <script src="./colorize.js"></script>
+  <script>
+    
+    var max = 255;
+    var min = 0;
+    
+    function copyto(from, toid)
+      {
+        var integ = 0;
+        if((from.value < min)||(from.value > max)||(isNaN(from.value)))
+          {
+            if(from.value > max)
+              {
+                integ = 255;
+              }
+          }
+        else
+          {
+            integ = Math.round(from.value);
+          }
+        document.getElementById(toid).value = integ;
+        from.value = integ;
+        colorize(integ, 255);
+      }
+    
+    function changespectrum()
+      {
+        var value = document.getElementById('int').value;
+        var spectrum = document.getElementById('select').options[document.getElementById('select').selectedIndex].value;
+        document.getElementById('spectrum').innerHTML = spectrum;
+        colorize(value, 255);
+      }
+    
+    function colorize(integer, max)
+      {
+        var spectrum = document.getElementById('spectrum').innerHTML;
+        var newcolor = colorizejs(integer, max, spectrum);
+        document.getElementById('dataoutput').style.background = newcolor;
+        document.getElementById('colordata').innerHTML = newcolor;
+      }
+
+  </script>
+</head>
+<body onload="changespectrum();">
+  <h1>colorize.js</h1>
+  <input id="range" class="datainput" name="html5shim-2" id="html5shim-2" type="range" min="0" max="255" step="1" title="Range: 0 to 255 in steps of 1" value="32" onchange="copyto(this, 'int');"><br>
+  <input id="int" class="datainput" name="int" type="text" value="32" onkeyup="copyto(this, 'range');"><br>
+  <select id="select" class="datainput" name="spectrum" size="5"
+      onchange="changespectrum();">
+    <option selected value="r2g">red -&gt; green</option>
+    <option value="g2r">green -&gt; red</option>
+    <option value="rnbw">rainbow</option>
+    <option value="b2w">black -&gt; white</option>
+    <option value="w2b">white -&gt; black</option>
+  </select>
+  <div id="spectrum" class="hidden">r2g</div>
+  
+  <hr>
+  <div id="colordata" class="data"></div>
+  <div id="dataoutput" class="dataoutput">
+    
+  </div>
+</body>
+</html>

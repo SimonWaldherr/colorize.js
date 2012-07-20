@@ -18,8 +18,8 @@ body{
 
 .dataoutput{
   height: 200px;
-  -webkit-box-shadow: inset 5px 12px 155px -5px #666;
-  box-shadow: inset 5px 12px 155px -5px #666;
+  -webkit-box-shadow: inset 5px 12px 155px -25px #666;
+  box-shadow: inset 5px 12px 155px -25px #666;
   border-radius: 5px;
 }
 

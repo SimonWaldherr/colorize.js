@@ -1,3 +1,11 @@
+/*
+ * colorize.js
+ * Repo: https://github.com/SimonWaldherr/colorize.js
+ * Demo: http://cdn.simon.waldherr.eu/projects/colorize.js/
+ * License: MIT
+ * Version: 0.0.2
+ */
+
 function d2h(d) {return Math.round(d).toString(16);}
 function h2d(h) {return parseInt(h,16);}
 
@@ -8,6 +16,10 @@ function colorizejs(integer, max, spectrum)
         return colorizejsr2g(integer, max);
      case 'g2r':
         return colorizejsr2g((max-integer), max);
+     case 'r2o2g':
+        return colorizejsr2o2g(integer, max);
+     case 'g2o2r':
+        return colorizejsr2o2g((max-integer), max);
      case 'b2w':
         return colorizejsb2w(integer, max);
      case 'w2b':
@@ -36,6 +48,35 @@ function colorizejsr2g(integer, max)
     {
       startR = 88;
       startG += input/4.1+3;
+    }
+  hexcolor = 'rgb('+Math.round(startR)+', '+Math.round(startG)+', '+Math.round(startB)+')';
+  return hexcolor;
+}
+
+function colorizejsr2o2g(integer, max)
+{
+  var input = Math.round(integer / max * 1000);
+  var hexcolor;
+  var startR = 254;
+  var startG = 1;
+  var startB = 24;
+
+  if(input<499)
+    {
+      startG = input/3;
+      startB -= input/26;
+    }
+  else if((input<502)&&(input>499))
+    {
+      startR = 255;
+      startG = 195;
+      startB = 5;
+    }
+  else
+    {
+      startR = 379 - input/4;
+      startG += input/9+109;
+      startB += input/22-41;
     }
   hexcolor = 'rgb('+Math.round(startR)+', '+Math.round(startG)+', '+Math.round(startB)+')';
   return hexcolor;

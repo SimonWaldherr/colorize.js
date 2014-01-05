@@ -7,45 +7,39 @@
   <script src="./modernizr.custom.min.js"></script>
   <script src="./colorize.js"></script>
   <script>
-    
-    var max = 255;
-    var min = 0;
-    
-    function copyto(from, toid)
-      {
-        var integ = 0;
-        if((from.value < min)||(from.value > max)||(isNaN(from.value)))
-          {
-            if(from.value > max)
-              {
-                integ = 255;
-              }
-          }
-        else
-          {
-            integ = Math.round(from.value);
-          }
-        document.getElementById(toid).value = integ;
-        from.value = integ;
-        colorize(integ, 255);
-      }
-    
-    function changespectrum()
-      {
-        var value = document.getElementById('int').value;
-        var spectrum = document.getElementById('select').options[document.getElementById('select').selectedIndex].value;
-        document.getElementById('spectrum').innerHTML = spectrum;
-        colorize(value, 255);
-      }
-    
-    function colorize(integer, max)
-      {
-        var spectrum = document.getElementById('spectrum').innerHTML;
-        var newcolor = colorizejs(integer, max, spectrum);
-        document.getElementById('dataoutput').style.background = newcolor;
-        document.getElementById('colordata').innerHTML = newcolor;
-      }
+var max = 255,
+  min = 0;
 
+function copyto(from, toid) {
+  var integ = 0;
+
+  if ((from.value < min) || (from.value > max) || (isNaN(from.value))) {
+    if (from.value > max) {
+      integ = 255;
+    }
+  } else {
+    integ = Math.round(from.value);
+  }
+  document.getElementById(toid).value = integ;
+  from.value = integ;
+  colorize(integ, 255);
+}
+
+function changespectrum() {
+  var value = document.getElementById('int').value,
+    spectrum = document.getElementById('select').options[document.getElementById('select').selectedIndex].value;
+
+  document.getElementById('spectrum').innerHTML = spectrum;
+  colorize(value, 255);
+}
+
+function colorize(integer, max) {
+  var spectrum = document.getElementById('spectrum').innerHTML,
+    newcolor = colorizejs(integer, max, spectrum);
+
+  document.getElementById('dataoutput').style.background = newcolor;
+  document.getElementById('colordata').innerHTML = newcolor;
+}
   </script>
 </head>
 <body onload="changespectrum();">
@@ -76,18 +70,15 @@
     
   </div>
 <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12565471-1']);
-  _gaq.push(['_setDomainName', 'waldherr.eu']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-12565471-1']);
+_gaq.push(['_setDomainName', 'waldherr.eu']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 </script>
 </body>
 </html>
